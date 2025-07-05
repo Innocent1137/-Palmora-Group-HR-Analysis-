@@ -6,7 +6,8 @@
 This project analyzes employee data for Palmoria Group to answer critical business questions using Power BI. It includes performance reviews, gender equity, pay band analysis, and bonus allocations.
 
 ---
-![Screenshot 2025-07-05 152154](https://github.com/user-attachments/assets/883a432d-c7a8-4066-822c-a9cd8e10b00f)
+![Screenshot 2025-07-05 160355](https://github.com/user-attachments/assets/c78ab6af-3eec-4506-9822-ffbf03f6d92d)
+
 
 ---
 ## 🔍 Case Questions Addressed
@@ -38,30 +39,56 @@ This project analyzes employee data for Palmoria Group to answer critical busine
   - Total Bonus Paid by Region and Company-wide
 
 ---
+![Screenshot 2025-07-05 160255](https://github.com/user-attachments/assets/34a405ec-c11a-403e-a213-99243133b023)
 
-![Screenshot 2025-07-05 152055](https://github.com/user-attachments/assets/c6d60ac3-5dfb-4c11-90cc-3a17ced0a705)
+
 ---
 
-## 📁 File Structure
+## 🧮 DAX Expressions Used
+
+```dax
+Gender Pay Gap = 
+VAR MaleAvg = CALCULATE(AVERAGE('Palmoria Group emp-data'[Salary]), 'Palmoria Group emp-data'[Gender] = "Male")
+VAR FemaleAvg = CALCULATE(AVERAGE('Palmoria Group emp-data'[Salary]), 'Palmoria Group emp-data'[Gender] = "Female")
+RETURN DIVIDE(MaleAvg - FemaleAvg, MaleAvg, 0)
+
+Salary Band = 
+VAR band = FLOOR('Palmoria Group emp-data'[Salary], 10000)
+RETURN FORMAT(band, "$#,##0") & " - " & FORMAT(band + 9999, "$#,##0")
+
+Manufacturing Below Threshold = 
+CALCULATE(
+    COUNTROWS('Palmoria Group emp-data'),
+    FILTER(
+        'Palmoria Group emp-data',
+        'Palmoria Group emp-data'[Department] = "Manufacturing" &&
+        'Palmoria Group emp-data'[Salary] < 90000
+    )
+)
+
+Bonus % (Based on Rating & Department) = 
+SWITCH(
+    TRUE(),
+    'Palmoria Group emp-data'[Rating] = "Very Poor", LOOKUPVALUE('Bonus Rules'[Very Poor], 'Bonus Rules'[Department], 'Palmoria Group emp-data'[Department]),
+    'Palmoria Group emp-data'[Rating] = "Poor", LOOKUPVALUE('Bonus Rules'[Poor], 'Bonus Rules'[Department], 'Palmoria Group emp-data'[Department]),
+    'Palmoria Group emp-data'[Rating] = "Average", LOOKUPVALUE('Bonus Rules'[Average], 'Bonus Rules'[Department], 'Palmoria Group emp-data'[Department]),
+    'Palmoria Group emp-data'[Rating] = "Good", LOOKUPVALUE('Bonus Rules'[Good], 'Bonus Rules'[Department], 'Palmoria Group emp-data'[Department]),
+    'Palmoria Group emp-data'[Rating] = "Very Good", LOOKUPVALUE('Bonus Rules'[Very Good], 'Bonus Rules'[Department], 'Palmoria Group emp-data'[Department])
+)
+
+Bonus Amount = 
+'Palmoria Group emp-data'[Salary] * 'Palmoria Group emp-data'[Bonus %]
+
+Total Pay = 
+'Palmoria Group emp-data'[Salary] + 'Palmoria Group emp-data'[Bonus Amount]
+
+Bonus Paid (Measure) = 
+SUM('Palmoria Group emp-data'[Bonus Amount])
+
+Total Pay Paid = 
+SUM('Palmoria Group emp-data'[Total Pay])
 
 ```
-Palmoria-Dashboard/
-│
-├── data/[Uploading Palmoria Group emp-data.csv…]()
-├─
-
-
-│   ├── Palmoria Group emp-data.csv
-│   ├── Palmoria Group Bonus Rules.xlsx
-│
-├── visuals/
-
-│   ├── Palmoria_Bonus_Dashboard_Visual.png
-│
-├── Palmoria_Bonus_Allocation_Dashboard.xlsx
-├── README.md
-```
-
 ---
 
 ## 📊 Power BI Features Used
