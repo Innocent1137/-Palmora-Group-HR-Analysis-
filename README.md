@@ -6,7 +6,9 @@
 This project analyzes employee data for Palmoria Group to answer critical business questions using Power BI. It includes performance reviews, gender equity, pay band analysis, and bonus allocations.
 
 ---
+![Screenshot 2025-07-05 152154](https://github.com/user-attachments/assets/883a432d-c7a8-4066-822c-a9cd8e10b00f)
 
+---
 ## 🔍 Case Questions Addressed
 
 ### ✅ 1. Gender Distribution in the Organization
@@ -37,16 +39,23 @@ This project analyzes employee data for Palmoria Group to answer critical busine
 
 ---
 
+![Screenshot 2025-07-05 152055](https://github.com/user-attachments/assets/c6d60ac3-5dfb-4c11-90cc-3a17ced0a705)
+---
+
 ## 📁 File Structure
 
 ```
 Palmoria-Dashboard/
 │
-├── data/
+├── data/[Uploading Palmoria Group emp-data.csv…]()
+├─
+
+
 │   ├── Palmoria Group emp-data.csv
 │   ├── Palmoria Group Bonus Rules.xlsx
 │
 ├── visuals/
+
 │   ├── Palmoria_Bonus_Dashboard_Visual.png
 │
 ├── Palmoria_Bonus_Allocation_Dashboard.xlsx
