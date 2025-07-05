@@ -75,10 +75,9 @@ Palmoria-Dashboard/
 
 ## 💡 Future Enhancements
 
-- Add Year-over-Year bonus trend analysis
-- Incorporate attendance or performance weight
-- Automate compliance flag for salaries below threshold
-
+- Integrate time-based data for trend analysis.
+   - Include job roles or seniority levels for a deeper look into compensation structure.
+   - Develop automated flags for regulatory compliance and pay equity violations.
 ---
 
 ## 🛠 Tools
@@ -88,7 +87,36 @@ Palmoria-Dashboard/
 - GitHub (for version control & documentation)
 
 ---
+## ⚠️ Project Limitations
 
-## 🙋‍♂️ Author
+1. **No Historical Data**  
+   The analysis is based on a single snapshot of employee data, limiting trend or time-based insights.
 
-Built by [Your Name] as part of a Power BI case study analysis.
+2. **No Job Title or Level**  
+   The dataset lacks role or seniority information, which restricts fair comparisons of salaries across employees.
+
+3. **Simplified Bonus Logic**  
+   Bonus percentages are applied uniformly based on department and rating, without adjustments for tenure or manager input.
+
+4. **Assumed Data Accuracy**  
+   All insights assume that the provided data is complete, clean, and correctly categorized (e.g., ratings, departments).
+
+5. **Missing Cost of Living Adjustments**  
+   Salaries are compared across regions without accounting for location-based differences in living expenses or local market rates.
+
+---
+## 📚 References
+
+- **Dataset Source** – Provided by DSA as part of the Palmoria Group case study, containing employee records and department-based bonus rules.
+
+- **Power BI Documentation** – [https://learn.microsoft.com/power-bi](https://learn.microsoft.com/power-bi)  
+  Official documentation used to understand data modeling, DAX functions, and visualization techniques.
+
+- **DAX Guide** – [https://dax.guide](https://dax.guide)  
+  Used for writing and validating DAX expressions such as `LOOKUPVALUE`, `CALCULATE`, and `SWITCH`.
+
+- **Microsoft Excel Functions** – [https://support.microsoft.com/excel](https://support.microsoft.com/excel)  
+  For data preprocessing and formatting before importing into Power BI.
+
+
+
